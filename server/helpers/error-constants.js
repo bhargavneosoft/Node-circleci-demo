@@ -1,0 +1,73 @@
+// This maps error constants with error messages.
+export default {
+	INVALID_USER: 'User not found',
+	INVALID_TOKEN: 'User token is invalid',
+	INVALID_APIKEY: 'API Key is invalid',
+	EMAIL_ID_NOT_REGISTER: 'Email not registered',
+	PASSWORD_DOES_NOT_MATCH: 'Incorrect Email ID or Password',
+	NOT_ADMIN: 'You are not the Admin',
+	AUTHENTICATION_FAILED: 'Authentication failed',
+	INVALID_EMAIL: 'Invalid email',
+	INVALID_PASSWORD: 'Incorrect password',
+	ROLE_NOT_FOUND: 'No such role found',
+	VERIFY_CODE_NOT_FOUND: 'No verfication code found',
+	TOKEN_EXPIRED: 'Token expired',
+	ROLE_UNAUTHORIZED: 'Unauthorized role access',
+	PASSWORD_MISMATCH_ERROR: 'Password mismatch',
+	EMAIL_ID_IS_DEACTIVATED: 'This account has been deactivated',
+	USER_EXISTS: 'User exists with the provided email',
+	ERROR_WHILE_MAIL_SENDING: 'Error occurred while sending mail',
+	CLIENT_EXISTS: 'Client exists with the same email',
+	PROBLEM_FETCHING_CLIENTS: 'Problem while fetching the users',
+	DUPLICATED_PHONE: 'The provided contact number is already in use',
+	ACTIVATION_ERROR: 'Please specify the activation or deactivation status',
+	CANT_DEACTIVATE_SELF: 'You cant perform action on yourself',
+	PROBLEM_FETCHING_LOGS: 'Problem while fetching the logs',
+	PROBLEM_FETCHING_HISTORY_CHANGES: 'Problem in fetching the history changes, Try again',
+	QA_UNAUTHORIZED: 'Only QAs can perform this operation',
+	PROBLEM_FETCHING_PENDING_QAS: 'Problem while fetching the Pending QAs',
+	SEARCH_PARAM_MISSING: 'Search parameter missing',
+	NO_HOSTORY_DATA: 'No History Data found',
+	PROBLEM_FETCHING_IRS: 'Problem fetching the Inbound Reciepts',
+	INVALID_CTOS: 'CTOS does not exists',
+	ADMIN_EXISTS: 'Admin has already been created',
+	QA_PENDING: 'QA has not approved the previous details',
+
+	NOT_FOUND: 'Page not found',
+	FIELD_MISSING: 'Some required fields are missing',
+	UNKNOWN_ERROR: 'Database error is occured or something went wrong',
+	UNPROCESSABLE: 'This record is already exist in our system, please check again.',
+	UNKNOWN_RECORD: 'This record does not exist in our system.',
+
+	//  error messages for all functions
+	CLIENT_QA_NOT_APPROVE: 'QA is not approved client details.',
+	CLIENT_QA_NOT_PENDING: 'Client details is still pending for qa approval.',
+	CLIENT_QA_NOT_FAILED: 'QA is failed client details',
+
+	CTOS_QA_NOT_APPROVE: 'QA is not approved CTOS details.',
+	CTOS_QA_NOT_PENDING: 'CTOS details is still pending for QA Approval.',
+	CTOS_QA_NOT_FAILED: 'QA is failed CTOS details',
+
+	ASN_QA_NOT_APPROVE: 'QA is not approved ASN details.',
+	ASN_QA_NOT_PENDING: 'Client details is still ASN for qa approval.',
+	ASN_QA_NOT_FAILED: 'QA is failed ASN details',
+
+	INBOUND_QA_NOT_APPROVE: 'QA is not approved INBOUND details.',
+	INBOUND_QA_NOT_PENDING: 'INBOUND details is still pending for qa approval.',
+	INBOUND_QA_NOT_FAILED: 'QA is failed INBOUND details',
+
+	FUNCTION4_2_QA_NOT_APPROVE: 'QA is not approved FUNCTION 4.2 details.',
+	FUNCTION4_2_QA_NOT_PENDING: 'FUNCTION 4.2 details is still pending for qa approval.',
+	FUNCTION4_2_QA_NOT_FAILED: 'QA is failed FUNCTION 4.2 details',
+
+	NCL_QA_NOT_APPROVE: 'QA is not approved NCL details.',
+	NCL_QA_NOT_PENDING: 'NCL details is still pending for qa approval.',
+	NCL_QA_NOT_FAILED: 'QA is failed NCL details',
+
+	FUNCTION6_1_QA_NOT_APPROVE: 'QA is not approved FUNCTION 6.1 details.',
+	FUNCTION6_1_QA_NOT_PENDING: 'FUNCTION 6.1 details is still pending for qa approval.',
+	FUNCTION6_1_QA_NOT_FAILED: 'QA is failed FUNCTION 6.1 details',
+	FUNC_6_1_NOT_FOUND: 'Function 6.1 Record not found',
+	CLIENT_CTOS_QA_PENDING: 'Client must be QA approved for the CTOS creation',
+	INVALID_IR: 'IR does not exists'
+};

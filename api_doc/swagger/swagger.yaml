@@ -1,0 +1,732 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Suren_IMS
+  description: Inventory System
+  contact: {}
+host: localhost:3014
+basePath: ''
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  Bearer:
+    description: For accessing the API a valid token must be passed in all the queries
+    type: apiKey
+    name: authorization
+    in: header
+paths:
+  /users/register:
+    post:
+      description: API to Register into the app (Admin use only)
+      summary: users/register
+      tags:
+      - Misc
+      operationId: UsersRegisterPost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        type: string
+        default: application/json
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1registerRequest'
+      responses:
+        200:
+          description: 'Registered Successfully'
+        103:
+          description: 'Some required fields are missing'
+        104:
+          description: 'Invalid email'
+        101:
+          description: 'API Key is invalid'
+        -520:
+          description: 'Database error is occured or something went wrong'
+  /users/create:
+    post:
+      description: to create new user into the app by the Admin
+      summary: users/create
+      tags:
+      - Misc
+      operationId: UsersCreatePost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        default: application/json
+      - name: token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1createRequest'
+      responses:
+        200:
+          description: 'Success'
+        103:
+          description: 'Some required fields are missing'
+        104:
+          description: 'Invalid email'
+        109:
+          description: 'No such role found'
+        101:
+          description: 'API Key is invalid'
+        116:
+          description: 'User exists with the provided email'
+  /roles/create:
+    post:
+      description: API to create the role (Admin use Only)
+      summary: roles/create
+      tags:
+      - Misc
+      operationId: RolesCreatePost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        default: application/json
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: 'Roles created successfully'
+        101:
+          description: 'API Key is invalid'
+        -520:
+          description: 'Database error is occured or something went wrong'
+  /users/login:
+    post:
+      description: to login the user into the app
+      summary: users/login
+      tags:
+      - Misc
+      operationId: UsersLoginPost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1loginRequest'
+      responses:
+        200:
+          description: 'Logged In Successfully'
+        104:
+          description: 'Invalid email'
+        105:
+          description: 'Incorrect password'
+        109:
+          description: 'No such role found'
+        112:
+          description: 'Unauthorized role access'
+        114:
+          description: 'User not found'
+        106:
+          description: 'Email not registered'
+        115:
+          description: 'This account has been deactivated'
+        101:
+          description: 'API Key is invalid'
+        -520:
+          description: 'Database error is occured or something went wrong'
+        107:
+          description: 'Incorrect Email ID or Password'
+  /users/forgotPassword:
+    post:
+      description: API to create and send verfication code to the user upon click to forgot password
+      summary: users/forgotPassword
+      tags:
+      - Misc
+      operationId: UsersForgotPasswordPost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1forgotPasswordRequest'
+      responses:
+        200:
+          description: 'Code has been sent'
+        -520:
+          description: 'Database error is occured or something went wrong'
+        104:
+          description: 'Invalid email'
+        101:
+          description: 'API Key is invalid'
+        106:
+          description: 'Email not registered'
+        117:
+          description: 'ERROR_WHILE_MAIL_SENDING'
+  /users/verify-code:
+    post:
+      description: API to reset password with the received verification code
+      summary: users/verify-code
+      tags:
+      - Misc
+      operationId: UsersVerifyCodePost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1verify-codeRequest'
+      responses:
+        200:
+          description: 'Password has been reset. Use with your login details to gain access in the application.'
+        105:
+          description: 'Incorrect password'
+        101:
+          description: 'API Key is invalid'
+        110: 
+          description: 'No verfication code found'
+        111:
+          description: 'Token expired'
+        114:
+          description: 'User not found'
+        -520:
+          description: 'Database error is occured or something went wrong'
+  /users/{id}:
+    delete:
+      description: Admin fetchs the user profile
+      summary: users/:id
+      tags:
+      - Misc
+      operationId: UsersUser5c7cfafa94de6120a2a670c8Delete
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        default: application/json
+      - name: token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: id
+        in: path
+        required: true
+        description: id of the user goes here.
+      responses:
+        200:
+          description: 'User has been removed'
+        101:
+          description: 'API Key is invalid'
+        108:
+          description: 'You are not the Admin'
+        114:
+          description: 'User not found'
+        -520:
+          description: 'Database error is occured or something went wrong'
+    get:
+      description: Admin updates the user profile
+      summary: users/:id
+      tags:
+      - Misc
+      operationId: UsersUser5c80c13feea98328b498df5eGet
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        default: application/json
+      - name: token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: id
+        in: path
+        required: true
+        description: id of the user goes here.
+      responses:
+        200:
+          description: 'Success'
+        101:
+          description: 'API Key is invalid'
+        108:
+          description: 'You are not the Admin'
+        114:
+          description: 'User not found'
+        -520:
+          description: 'Database error is occured or something went wrong'
+    put:
+      description: Admin deletes the user profile
+      summary: users/:id
+      tags:
+      - Misc
+      operationId: UsersUser5c7cfafa94de6120a2a670c8Put
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        default: application/json
+      - name: token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1user~1%3AidRequest'
+      - name: id
+        in: path
+        required: true
+        description: id of the user goes here.
+      responses:
+        200:
+          description: 'User has been updated'
+        101:
+          description: 'API Key is invalid'
+        108:
+          description: 'You are not the Admin'
+        114:
+          description: 'User not found'
+        -520:
+          description: 'Database error is occured or something went wrong'
+        104:
+          description: 'Invalid email'
+        105:
+          description: 'Incorrect password'
+  /users/changePassword:
+    put:
+      description: API to change my password
+      summary: users/changePassword
+      tags:
+      - Misc
+      operationId: UsersChangePasswordPut
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        default: application/json
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/users~1changePasswordRequest'
+      responses:
+        200:
+          description: 'Password updated'
+        114: 
+          description: 'User not found'
+        103:
+          description: 'Some required fields are missing'
+        113:
+          description: 'Password mismatch'
+        -520:
+          description: 'Database error is occured or something went wrong'
+
+definitions:
+  users/registerRequest:
+    title: users/registerRequest
+    example:
+      name: Suren A
+      gender: Male
+      state: maharashtra
+      email: admin@ims.com
+      password: admin123
+      contact_address: Mumbai
+      contact_number: 999999999
+    type: object
+    properties:
+      name:
+        type: string
+      gender:
+        type: string
+      state:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      contact_address:
+        type: string
+      contact_number:
+        type: integer
+        format: int32
+    required:
+    - name
+    - gender
+    - state
+    - email
+    - password
+    - contact_address
+    - contact_number
+  users/createRequest:
+    title: users/createRequest
+    example:
+      name: ben stark
+      gender: Male
+      email: pushkar.abhishek+1@hotmail.com
+      password: ac3r
+      contact_position: bombard
+      contact_address: bostans
+      reference_no: 002
+      contact_number: 432432423
+      selected_role: operator
+    type: object
+    properties:
+      name:
+        type: string
+      gender:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      contact_position:
+        type: string
+      contact_address:
+        type: string
+      reference_no:
+        type: string
+      contact_number:
+        type: integer
+        format: int32
+      selected_role:
+        type: string
+    required:
+    - name
+    - gender
+    - email
+    - password
+    - contact_position
+    - contact_address
+    - reference_no
+    - contact_number
+    - selected_role
+  users/loginRequest:
+    title: users/loginRequest
+    example:
+      username: pushkar.abhishek@neotech.com
+      password: ac3r
+      role: client
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+    required:
+    - username
+    - password
+    - role
+  users/forgotPasswordRequest:
+    title: users/forgotPasswordRequest
+    example:
+      email: bikerpushkarchamp@gmail.com
+    type: object
+    properties:
+      email:
+        type: string
+    required:
+    - email
+  users/verify-codeRequest:
+    title: users/verify-codeRequest
+    example:
+      verify_code: lyfa0w
+      new_password: neosoft
+    type: object
+    properties:
+      verify_code:
+        type: string
+      new_password:
+        type: string
+    required:
+    - verify_code
+    - new_password
+  users/user/:idRequest:
+    title: users/user/:idRequest
+    example:
+      name: donald
+      contact_position: MH
+      email: pushkar_0806@hotmail.com
+      contact_address: Pune
+      password: ac3r
+      contact_number: 645464343
+    type: object
+    properties:
+      name:
+        type: string
+      contact_position:
+        type: string
+      email:
+        type: string
+      contact_address:
+        type: string
+      password:
+        type: string
+      contact_number:
+        type: string
+    required:
+    - name
+    - contact_position
+    - email
+    - contact_address
+    - password
+    - contact_number
+  users/changePasswordRequest:
+    title: users/changePasswordRequest
+    example:
+      email: bikerpushkarchamp@gmail.com
+    type: object
+    properties:
+      email:
+        type: string
+    required:
+    - email
+  users/cda/:idRequest:
+    title: users/cda/:idRequest
+    example:
+      cda:
+        effective_date: 02/02/2019
+        terms: again free
+        obligation_after_agreement: will need to work
+        review_date: 04/07/2025
+        comments: enjoy now
+    type: object
+    properties:
+      cda:
+        $ref: '#/definitions/Cda'
+    required:
+    - cda
+  Cda:
+    title: Cda
+    type: object
+    properties:
+      effective_date:
+        type: string
+      terms:
+        type: string
+      obligation_after_agreement:
+        type: string
+      review_date:
+        type: string
+      comments:
+        type: string
+    required:
+    - effective_date
+    - terms
+    - obligation_after_agreement
+    - review_date
+    - comments
+  users/msa/:idRequest:
+    title: users/msa/:idRequest
+    example:
+      msa:
+        effective_date: 02/02/2019
+        terms: again free
+        obligation_after_agreement: will need to work
+        review_date: 04/07/2025
+        comments: enjoy now
+    type: object
+    properties:
+      msa:
+        $ref: '#/definitions/Msa'
+    required:
+    - msa
+  Msa:
+    title: Msa
+    type: object
+    properties:
+      effective_date:
+        type: string
+      terms:
+        type: string
+      obligation_after_agreement:
+        type: string
+      review_date:
+        type: string
+      comments:
+        type: string
+    required:
+    - effective_date
+    - terms
+    - obligation_after_agreement
+    - review_date
+    - comments
+  users/pricing/:idRequest:
+    title: users/pricing/:idRequest
+    example:
+      pricing:
+        effective_date: 02/02/2019
+        terms: again free
+        obligation_after_agreement: will need to work
+        review_date: 04/07/2025
+        comments: enjoy now
+    type: object
+    properties:
+      pricing:
+        $ref: '#/definitions/Pricing'
+    required:
+    - pricing
+  Pricing:
+    title: Pricing
+    type: object
+    properties:
+      effective_date:
+        type: string
+      terms:
+        type: string
+      obligation_after_agreement:
+        type: string
+      review_date:
+        type: string
+      comments:
+        type: string
+    required:
+    - effective_date
+    - terms
+    - obligation_after_agreement
+    - review_date
+    - comments
+  users/amendment/:idRequest:
+    title: users/amendment/:idRequest
+    example:
+      amendments:
+        effective_date: 02/02/2019
+        terms: again free
+        obligation_after_agreement: will need to work
+        review_date: 04/07/2025
+        comments: enjoy now
+    type: object
+    properties:
+      amendments:
+        $ref: '#/definitions/Amendments'
+    required:
+    - amendments
+  Amendments:
+    title: Amendments
+    type: object
+    properties:
+      effective_date:
+        type: string
+      terms:
+        type: string
+      obligation_after_agreement:
+        type: string
+      review_date:
+        type: string
+      comments:
+        type: string
+    required:
+    - effective_date
+    - terms
+    - obligation_after_agreement
+    - review_date
+    - comments
+tags:
+- name: Misc
+  description: ''

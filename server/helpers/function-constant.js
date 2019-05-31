@@ -1,0 +1,41 @@
+/**
+ * Export all function constants
+ */
+
+export default {
+	ACTIVE: 'ACTIVE',
+	INACTIVE: 'INACTIVE',
+	PENDING: 'Pending',
+	PASSED: 'PASSED',
+	FAILED: 'FAILED',
+	FUNCTION: 'FUNCTION',
+	QA: 'QA',
+	YES: 'YES',
+	NO: 'NO',
+	NA: 'N/A',
+	CLIENT: 'CLIENT',
+	CTOS: 'CTOS',
+	ASN: 'ASN',
+	EVENT: 'event_log',
+	FUNCTION_1: 'function1',
+	FUNCTION_1_1: 'function1.1',
+	FUNCTION_1_2: 'function1.2',
+	FUNCTION_2: 'function2',
+	FUNCTION_2_1: 'function2.1',
+	FUNCTION_2_2: 'function2.2',
+	FUNCTION_3: 'function3',
+	FUNCTION_4: 'function4',
+	FUNCTION_4_1: 'function4.1',
+	FUNCTION_4_2: 'function4.2',
+	FUNCTION_5: 'function5',
+	FUNCTION_6: 'function6',
+	FUNCTION_6_1: 'function6.1',
+	FUNCTION_6_2: 'function6.2',
+	CONFIRMED: 'CONFIRMED',
+	ON: 'ON',
+	OFF: 'OFF',
+	IR: 'IR',
+	ELECTRONIC_TEMPLATE: 'Electronic Template NCL',
+	PHYSICAL: 'Physical NCL',
+	NCL: 'NCL'
+};

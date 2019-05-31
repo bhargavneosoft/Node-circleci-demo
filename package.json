@@ -1,0 +1,42 @@
+{
+  "name": "suren_node",
+  "version": "1.0.0",
+  "description": "The Inventory management system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js --watch server --exec babel-node"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.18.3",
+    "change-case": "^3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "escape-string-regexp": "^1.0.5",
+    "eslint": "^5.15.1",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
+    "mongoose": "^5.4.16",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "randomstring": "^1.1.5",
+    "require-dir": "^1.2.0",
+    "swagger-ui-express": "^4.0.2",
+    "validator": "^10.11.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4"
+  }
+}

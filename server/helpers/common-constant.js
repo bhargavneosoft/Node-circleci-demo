@@ -1,0 +1,9 @@
+export default {
+	CTOS: "CTOS",
+	ASN: "ASN",
+	FUNCTION4_1: "FUNCTION4_1",
+    FUNCTION4_2: "FUNCTION4_2",
+    NCL:"NCL",
+    FUNCTION6_1:"FUNCTION6_1",
+    FUNCTION6_2:"FUNCTION6_2",
+};

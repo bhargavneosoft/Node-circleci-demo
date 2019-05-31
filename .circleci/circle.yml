@@ -1,11 +1,11 @@
-version: 1
+version: 2
 jobs:
   build:
+    working_directory: ~/
     docker:
-      — image: circleci/node:latest
-    working_directory: ~/master
+      - image: circleci/node:9
     steps:
-        — checkout
-          - run: npm install
-          — run: npm test
-
+      - checkout
+      - run:
+          name: Download Dependencies
+          command: npm install

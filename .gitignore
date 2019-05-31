@@ -4,3 +4,4 @@ config/env/development.js
 .env
 client/
 .vscode
+.idea/*

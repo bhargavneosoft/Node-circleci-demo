@@ -30,7 +30,7 @@
     "randomstring": "^1.1.5",
     "require-dir": "^1.2.0",
     "swagger-ui-express": "^4.0.2",
-    "validator": "^10.11.0",
+    "validator": "^13.7.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {

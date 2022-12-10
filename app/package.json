@@ -18,7 +18,7 @@
     "dotenv": "^7.0.0",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^5.15.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
